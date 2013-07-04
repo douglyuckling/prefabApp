@@ -1,0 +1,6 @@
+.gradle/
+
+# IntelliJ IDEA module, project, and workspace files
+*.iml
+*.ipr
+*.iws

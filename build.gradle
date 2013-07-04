@@ -1,0 +1,8 @@
+// No source yet!
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.6'
+}
+
+// IDE Support...
+apply plugin: 'idea'
