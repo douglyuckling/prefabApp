@@ -1,6 +1,13 @@
 .gradle/
+build/
 
 # IntelliJ IDEA module, project, and workspace files
 *.iml
 *.ipr
 *.iws
+
+# IntilliJ IDEA likes to place framework support libraries here
+/lib/
+
+# General stuff
+*.bak
