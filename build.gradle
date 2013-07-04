@@ -1,3 +1,6 @@
+ext.intendedGradleVersion = '1.6'
+apply from: 'buildSrc/gradleVersioningSupport.gradle'
+
 apply plugin: 'war'
 
 repositories {
@@ -11,21 +14,4 @@ dependencies {
 // Allow us to deploy directly from Gradle using Jetty
 apply plugin: 'jetty'
 
-// Gradle wrapper
-task wrapper(type: Wrapper) {
-    gradleVersion = '1.6'
-}
-
-// IDE Support...
-apply plugin: 'idea'
-idea {
-    module {
-        downloadJavadoc = true
-    }
-
-    project.ipr {
-        withXml { provider ->
-            provider.node.component.find { it.@name == 'VcsDirectoryMappings' }.mapping.@vcs = 'Git'
-        }
-    }
-}
+apply from: 'buildSrc/ideSupport.gradle'

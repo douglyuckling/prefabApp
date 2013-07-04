@@ -1,0 +1,14 @@
+assert rootProject.hasProperty('intendedGradleVersion')
+
+if (gradle.gradleVersion != rootProject.intendedGradleVersion) {
+    throw new GradleException("This build is written for Gradle ${rootProject.intendedGradleVersion} but has been executed with Gradle ${gradle.gradleVersion}.")
+}
+
+allprojects {
+
+    //noinspection GrUnresolvedAccess
+    task wrapper(type: Wrapper) {
+        gradleVersion = rootProject.intendedGradleVersion
+    }
+
+}

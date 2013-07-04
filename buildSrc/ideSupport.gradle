@@ -1,0 +1,12 @@
+apply plugin: 'idea'
+idea {
+    module {
+        downloadJavadoc = true
+    }
+
+    project.ipr {
+        withXml { provider ->
+            provider.node.component.find { it.@name == 'VcsDirectoryMappings' }.mapping.@vcs = 'Git'
+        }
+    }
+}
