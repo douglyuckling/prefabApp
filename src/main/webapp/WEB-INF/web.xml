@@ -13,7 +13,7 @@
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>prefabapp.ApplicationConfig</param-value>
+        <param-value>prefabapp.config.ApplicationConfig</param-value>
     </context-param>
 
     <listener>
@@ -29,7 +29,7 @@
         </init-param>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>prefabapp.web</param-value>
+            <param-value>prefabapp.config.DispatcherServletConfig</param-value>
         </init-param>
     </servlet>
 
