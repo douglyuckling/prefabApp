@@ -14,7 +14,7 @@ public class ExampleContentController {
     @Value("${application.web.content.message}")
     private String message;
 
-    @RequestMapping(value = "/index.html", method = GET)
+    @RequestMapping(value = "/", method = GET)
     public ModelAndView getIndex() {
         ModelAndView model = new ModelAndView("index");
         model.addObject("message", message);

@@ -7,15 +7,4 @@ allprojects {
     }
 }
 
-project(':web') {
-    apply plugin: 'war'
-
-    dependencies {
-        compile 'org.springframework:spring-webmvc:3.2.3.RELEASE'
-    }
-
-    // Allow us to deploy directly from Gradle using Jetty
-    apply plugin: 'jetty'
-}
-
 apply from: 'buildSrc/ideSupport.gradle'
