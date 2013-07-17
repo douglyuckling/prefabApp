@@ -1,17 +1,21 @@
 ext.intendedGradleVersion = '1.6'
 apply from: 'buildSrc/gradleVersioningSupport.gradle'
 
-apply plugin: 'war'
-
-repositories {
-    mavenCentral()
+allprojects {
+    repositories {
+        mavenCentral()
+    }
 }
 
-dependencies {
-    compile 'org.springframework:spring-webmvc:3.2.3.RELEASE'
-}
+project(':web') {
+    apply plugin: 'war'
 
-// Allow us to deploy directly from Gradle using Jetty
-apply plugin: 'jetty'
+    dependencies {
+        compile 'org.springframework:spring-webmvc:3.2.3.RELEASE'
+    }
+
+    // Allow us to deploy directly from Gradle using Jetty
+    apply plugin: 'jetty'
+}
 
 apply from: 'buildSrc/ideSupport.gradle'

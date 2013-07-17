@@ -1,0 +1,2 @@
+rootProject.name='prefabApp'
+include 'web'
