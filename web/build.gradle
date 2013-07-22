@@ -1,11 +1,41 @@
 apply plugin: 'war'
 
+configurations {
+    webLibraries
+}
+
+repositories {
+    ivy {
+        url 'http://cdn.sencha.com/'
+        layout 'pattern', {
+            artifact "ext/gpl/ext-[revision]-gpl.[ext]"
+        }
+    }
+}
+
 dependencies {
     compile 'org.springframework:spring-webmvc:3.2.3.RELEASE'
+
+    webLibraries group: 'com.sencha', name:'extjs', version: '4.2.1', ext: 'zip'
+}
+
+ext.unpackedWebLibraries = fileTree("$buildDir/unpackedWebLibraries") { builtBy 'unpackExtJs' }
+task unpackExtJs(type: Sync) {
+    FileTree extJsArchive = zipTree(configurations.webLibraries.files{it.name == 'extjs'}.iterator().next())
+
+    into unpackedWebLibraries.dir
+    from extJsArchive
+    include 'ext-*/*.js'
+    include 'ext-*/resources/ext-theme-neptune/'
+    include 'ext-*/resources/css/ext-all-neptune*.css'
+    eachFile{ if (relativePath.segments.length) { relativePath.segments[0] = 'extjs' } }
 }
 
 // Allow us to deploy directly from Gradle using Jetty
 apply plugin: 'jetty'
+apply from: rootProject.file('buildSrc/customJettyConfig.gradle')
 jettyRun {
+    dependsOn unpackedWebLibraries
     contextPath = ''
+    resourceDirs << unpackedWebLibraries.dir
 }

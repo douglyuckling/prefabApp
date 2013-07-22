@@ -22,7 +22,7 @@ public class DispatcherServletConfig extends WebMvcConfigurationSupport {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        registry.addResourceHandler("/resources/**").addResourceLocations("/public-resources/");
+        registry.addResourceHandler("/extjs/**").addResourceLocations("/extjs/");
     }
 
     @Bean

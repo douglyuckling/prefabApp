@@ -1,0 +1,12 @@
+import org.gradle.api.plugins.jetty.internal.JettyPluginWebAppContext
+
+jettyRun {
+    ext.resourceDirs = [ file('src/main/webapp') ]
+}
+jettyRun.doFirst {
+    def jettyPluginClassLoader = JettyPluginWebAppContext.class.classLoader
+    def resourceCollectionClass = jettyPluginClassLoader.loadClass('org.mortbay.resource.ResourceCollection')
+
+    jettyRun.webAppConfig = new JettyPluginWebAppContext()
+    jettyRun.webAppConfig.baseResource = resourceCollectionClass.newInstance(resourceDirs as String[])
+}
