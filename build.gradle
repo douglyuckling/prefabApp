@@ -5,6 +5,33 @@ allprojects {
     repositories {
         mavenCentral()
     }
+
+    apply plugin: 'java'
+    sourceCompatibility = 1.7
+    targetCompatibility = 1.7
+}
+
+ext.springVersion = '3.2.3.RELEASE'
+
+subprojects {
+    dependencies {
+        compile "org.springframework:spring-beans:${springVersion}"
+        compile "org.springframework:spring-context:${springVersion}"
+    }
+}
+
+project(':services') {
+    dependencies {
+        compile project(':domain')
+    }
+}
+
+project(':web') {
+    dependencies {
+        compile project(':services')
+        compile "org.springframework:spring-webmvc:${springVersion}"
+        compile 'org.codehaus.jackson:jackson-mapper-lgpl:1.9.13'
+    }
 }
 
 apply from: 'buildSrc/ideSupport.gradle'
