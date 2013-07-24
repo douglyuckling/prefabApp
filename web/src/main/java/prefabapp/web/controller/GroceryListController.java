@@ -20,7 +20,7 @@ public class GroceryListController {
     @Autowired
     private GroceryListService groceryListService;
 
-    @RequestMapping(value = "/", method = GET)
+    @RequestMapping(value = {"","/"}, method = GET)
     @ResponseBody
     public List<GroceryListItem> getGroceryList() {
         return new ArrayList<>(groceryListService.getItems());
