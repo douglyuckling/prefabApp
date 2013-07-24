@@ -5,11 +5,17 @@ Ext.define('PA.controller.GroceryList', {
     views: ['GroceryListPanel'],
 
     init: function() {
+        this.control({
+            'grocerylist tool[type=refresh]': {
+                click: this.refreshList
+            }
+        });
+
         this.refreshList();
     },
 
     refreshList: function() {
-        this.getStore('GroceryList').load();
+        this.getGroceryListStore().load();
     }
 
 });

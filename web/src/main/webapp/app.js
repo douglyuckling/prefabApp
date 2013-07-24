@@ -15,7 +15,7 @@ Ext.application({
                 {
                     xtype: 'grocerylist',
                     title: 'Grocery List',
-                    store: this.getController('GroceryList').getStore('GroceryList')
+                    store: this.getGroceryListController().getGroceryListStore()
                 }
             ]
         });
