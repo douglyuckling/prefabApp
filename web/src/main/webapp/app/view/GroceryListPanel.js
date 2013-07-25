@@ -12,19 +12,28 @@ Ext.define('PA.view.GroceryListPanel' ,{
     columns: [{
         text: 'Item',
         dataIndex: 'name',
-        flex: 1,
+        width: 150,
         editor: {
             xtype: 'textfield',
             allowOnlyWhitespace: false,
-            emptyText: 'New list item'
+            emptyText: 'New list item...'
         }
     }, {
         text: 'Quantity',
         dataIndex: 'quantity',
-        flex: 1,
+        width: 85,
         editor: {
             xtype: 'numberfield',
             allowBlank: false
+        }
+    }, {
+        text: 'Unit',
+        dataIndex: 'unit',
+        width: 100,
+        editor: {
+            xtype: 'textfield',
+            allowBlank: true,
+            emptyText: 'unit [optional]'
         }
     }],
 
@@ -41,6 +50,8 @@ Ext.define('PA.view.GroceryListPanel' ,{
         this.columns.push({
             xtype:'actioncolumn',
             width:50,
+            flex: 1,
+            align: 'right',
             icon: 'resources/theme-neptune/images/tools/tool-close-dark.png',
             tooltip: 'Delete',
             handler: function() {

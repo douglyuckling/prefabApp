@@ -14,9 +14,9 @@ public class DummyGroceryListItemRepositoryImpl implements GroceryListItemReposi
     private Map<String, GroceryListItem> itemsById = new LinkedHashMap<>();
 
     public DummyGroceryListItemRepositoryImpl() {
-        storeItem(new GroceryListItem("Milk (gallon)"));
-        storeItem(new GroceryListItem("Eggs (dozen)"));
-        storeItem(new GroceryListItem("Bread (loaf)", 2));
+        storeItem(new GroceryListItem("milk", "gallon"));
+        storeItem(new GroceryListItem("eggs", 2, "dozen"));
+        storeItem(new GroceryListItem("bread", "loaf"));
     }
 
     @Override
@@ -29,7 +29,7 @@ public class DummyGroceryListItemRepositoryImpl implements GroceryListItemReposi
         List<GroceryListItem> savedItems = new ArrayList<>(items.size());
         for (GroceryListItem item : items) {
             if (!StringUtils.hasText(item.getId())) {
-                item = new GroceryListItem(item.getName(), item.getQuantity());
+                item = new GroceryListItem(item.getName(), item.getQuantity(), item.getUnit());
             }
             savedItems.add(item);
             storeItem(item);

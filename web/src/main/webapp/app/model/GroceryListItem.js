@@ -3,6 +3,7 @@ Ext.define('PA.model.GroceryListItem', {
     fields: [
         {name: 'id', type: 'string'},
         {name: 'name', type: 'string'},
-        {name: 'quantity', type: 'int'}
+        {name: 'quantity', type: 'int'},
+        {name: 'unit', type: 'string'}
     ]
 });

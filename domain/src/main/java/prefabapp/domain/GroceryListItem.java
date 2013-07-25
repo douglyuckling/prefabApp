@@ -6,18 +6,20 @@ public class GroceryListItem {
     private String id;
     private String name;
     private int quantity;
+    private String unit;
 
     private GroceryListItem() {
     }
 
-    public GroceryListItem(String name, int quantity) {
+    public GroceryListItem(String name, int quantity, String unit) {
         this.id = UUID.randomUUID().toString();
         this.name = name.trim();
         this.quantity = quantity;
+        this.unit = unit;
     }
 
-    public GroceryListItem(String name) {
-        this(name, 1);
+    public GroceryListItem(String name, String unit) {
+        this(name, 1, unit);
     }
 
     public String getId() {
@@ -30,6 +32,10 @@ public class GroceryListItem {
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public String getUnit() {
+        return unit;
     }
 
     @Override
