@@ -5,6 +5,8 @@ Ext.define('PA.view.GroceryListPanel' ,{
 
     tools: [{
         type: 'refresh'
+    }, {
+        type: 'plus'
     }],
 
     columns: [{
@@ -13,7 +15,8 @@ Ext.define('PA.view.GroceryListPanel' ,{
         flex: 1,
         editor: {
             xtype: 'textfield',
-            allowBlank: false
+            allowOnlyWhitespace: false,
+            emptyText: 'New list item'
         }
     }, {
         text: 'Quantity',
