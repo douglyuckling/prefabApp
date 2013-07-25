@@ -1,5 +1,7 @@
 package prefabapp.domain;
 
+import java.util.UUID;
+
 public class GroceryListItem {
     private String id;
     private String name;
@@ -9,9 +11,8 @@ public class GroceryListItem {
     }
 
     public GroceryListItem(String name, int quantity) {
-        name = name.trim();
-        this.id = name.toUpperCase();
-        this.name = name;
+        this.id = UUID.randomUUID().toString();
+        this.name = name.trim();
         this.quantity = quantity;
     }
 
@@ -29,10 +30,6 @@ public class GroceryListItem {
 
     public int getQuantity() {
         return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     @Override

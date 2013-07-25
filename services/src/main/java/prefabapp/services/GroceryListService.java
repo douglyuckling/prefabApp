@@ -8,6 +8,8 @@ public interface GroceryListService {
 
     Collection<GroceryListItem> getItems();
 
-    Collection<GroceryListItem> updateItems(Collection<GroceryListItem> items);
+    Collection<GroceryListItem> saveItems(Collection<GroceryListItem> items);
+
+    void deleteItemById(String itemId);
 
 }

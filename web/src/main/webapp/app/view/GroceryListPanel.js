@@ -31,6 +31,25 @@ Ext.define('PA.view.GroceryListPanel' ,{
     plugins: [{
         ptype: 'rowediting',
         clicksToEdit: 1
-    }]
+    }],
+
+    initComponent: function() {
+        var me = this;
+
+        this.addEvents('delete');
+
+        this.columns.push({
+            xtype:'actioncolumn',
+            width:50,
+            icon: 'resources/theme-neptune/images/tools/tool-close-dark.png',
+            tooltip: 'Delete',
+            handler: function() {
+                var actioncolumn = this;
+                me.fireEventArgs('delete', [me, actioncolumn].concat(Array.prototype.slice.call(arguments, 0)));
+            }
+        });
+
+        this.callParent(arguments);
+    }
 
 });

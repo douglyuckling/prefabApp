@@ -8,6 +8,8 @@ public interface GroceryListItemRepository {
 
     Collection<GroceryListItem> getItems();
 
-    void updateItems(Collection<GroceryListItem> items);
+    Collection<GroceryListItem> saveItems(Collection<GroceryListItem> items);
+
+    void deleteItemById(String itemId);
 
 }

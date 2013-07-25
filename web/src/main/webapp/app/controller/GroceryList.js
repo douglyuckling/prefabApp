@@ -14,7 +14,8 @@ Ext.define('PA.controller.GroceryList', {
             },
             'grocerylist': {
                 edit: this.onRowEdit,
-                canceledit: this.onCancelRowEdit
+                canceledit: this.onCancelRowEdit,
+                delete: this.onRowDelete
             }
         });
 
@@ -57,6 +58,19 @@ Ext.define('PA.controller.GroceryList', {
         if (wasFirstEditOnNewRecord) {
             this.getGroceryListStore().remove(record);
         }
+    },
+
+    onRowDelete: function(groceryListPanel, actionColumn, view, rowIndex, colIndex, item, e, record, row) {
+        var rowEditingPlugin = groceryListPanel.findPlugin('rowediting');
+        console.log(record);
+
+        Ext.defer(function() {
+            // Cancel an ongoing edit, if there is one.
+            rowEditingPlugin.cancelEdit();
+
+            this.getGroceryListStore().remove(record);
+            this.getGroceryListStore().sync();
+        }, 1, this);
     },
 
     refreshList: function() {
