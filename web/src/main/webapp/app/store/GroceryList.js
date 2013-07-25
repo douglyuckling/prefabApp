@@ -4,6 +4,7 @@ Ext.define('PA.store.GroceryList', {
     proxy: {
         type: 'ajax',
         url : 'data/grocerylist',
+        writer: { allowSingle: false },
         pageParam: undefined,
         limitParam: undefined,
         startParam: undefined

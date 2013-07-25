@@ -7,11 +7,22 @@ Ext.define('PA.controller.GroceryList', {
     init: function() {
         this.control({
             'grocerylist tool[type=refresh]': {
-                click: this.refreshList
+                click: this.onRefreshToolClicked
+            },
+            'grocerylist': {
+                edit: this.onRowEdit
             }
         });
 
         this.refreshList();
+    },
+
+    onRefreshToolClicked: function() {
+        this.refreshList();
+    },
+
+    onRowEdit: function() {
+        this.getGroceryListStore().sync();
     },
 
     refreshList: function() {

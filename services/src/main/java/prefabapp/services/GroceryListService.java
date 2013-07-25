@@ -8,6 +8,6 @@ public interface GroceryListService {
 
     Collection<GroceryListItem> getItems();
 
-    void saveItem(GroceryListItem item);
+    Collection<GroceryListItem> updateItems(Collection<GroceryListItem> items);
 
 }

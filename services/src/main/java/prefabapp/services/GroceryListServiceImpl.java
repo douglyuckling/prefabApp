@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import prefabapp.domain.GroceryListItem;
 import prefabapp.domain.repository.GroceryListItemRepository;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class GroceryListServiceImpl implements GroceryListService {
@@ -17,8 +18,9 @@ public class GroceryListServiceImpl implements GroceryListService {
     }
 
     @Override
-    public void saveItem(GroceryListItem item) {
-        repository.saveItem(item);
+    public Collection<GroceryListItem> updateItems(Collection<GroceryListItem> items) {
+        repository.updateItems(items);
+        return new ArrayList<>(items);
     }
 
 }

@@ -2,6 +2,7 @@ package prefabapp.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import prefabapp.domain.GroceryListItem;
@@ -26,11 +27,10 @@ public class GroceryListController {
         return new ArrayList<>(groceryListService.getItems());
     }
 
-    @RequestMapping(value = "/item", method = POST)
+    @RequestMapping(value = {"", "/"}, method = POST)
     @ResponseBody
-    public GroceryListItem getGroceryList(GroceryListItem groceryListItem) {
-        groceryListService.saveItem(groceryListItem);
-        return groceryListItem;
+    public List<GroceryListItem> updateGroceryListItems(@RequestBody List<GroceryListItem> modifiedItems) {
+        return new ArrayList<>(groceryListService.updateItems(modifiedItems));
     }
 
 }

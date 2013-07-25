@@ -1,9 +1,12 @@
 package prefabapp.domain;
 
 public class GroceryListItem {
-    private final String id;
-    private final String name;
+    private String id;
+    private String name;
     private int quantity;
+
+    private GroceryListItem() {
+    }
 
     public GroceryListItem(String name, int quantity) {
         name = name.trim();

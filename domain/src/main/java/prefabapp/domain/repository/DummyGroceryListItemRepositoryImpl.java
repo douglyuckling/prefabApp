@@ -9,22 +9,28 @@ import java.util.Map;
 
 public class DummyGroceryListItemRepositoryImpl implements GroceryListItemRepository {
 
-    private Map<String, GroceryListItem> items = new LinkedHashMap<>();
+    private Map<String, GroceryListItem> itemsById = new LinkedHashMap<>();
 
     public DummyGroceryListItemRepositoryImpl() {
-        saveItem(new GroceryListItem("Milk (gallon)"));
-        saveItem(new GroceryListItem("Eggs (dozen)"));
-        saveItem(new GroceryListItem("Bread (loaf)", 2));
+        storeItem(new GroceryListItem("Milk (gallon)"));
+        storeItem(new GroceryListItem("Eggs (dozen)"));
+        storeItem(new GroceryListItem("Bread (loaf)", 2));
     }
 
     @Override
     public Collection<GroceryListItem> getItems() {
-        return new ArrayList<>(items.values());
+        return new ArrayList<>(itemsById.values());
     }
 
     @Override
-    public void saveItem(GroceryListItem item) {
-        items.put(item.getId(), item);
+    public void updateItems(Collection<GroceryListItem> items) {
+        for (GroceryListItem item : items) {
+            storeItem(item);
+        }
+    }
+
+    private void storeItem(GroceryListItem item) {
+        this.itemsById.put(item.getId(), item);
     }
 
 }
