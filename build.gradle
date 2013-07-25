@@ -26,12 +26,4 @@ project(':services') {
     }
 }
 
-project(':web') {
-    dependencies {
-        compile project(':services')
-        compile "org.springframework:spring-webmvc:${springVersion}"
-        compile 'org.codehaus.jackson:jackson-mapper-lgpl:1.9.13'
-    }
-}
-
 apply from: 'buildSrc/ideSupport.gradle'
